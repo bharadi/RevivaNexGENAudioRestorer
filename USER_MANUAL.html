@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviva NexGEN Audio Restorer v1.0.0 — User Manual &amp; Technical Specifications</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --card: #161626;
+      --border: #2a2a44;
+      --purple: #8b5cf6;
+      --cyan: #06b6d4;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 32px 20px;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, #1a1630 0%, #0f1c2e 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    h1 { margin: 0 0 8px; color: var(--cyan); font-size: 28px; }
+    .meta { color: var(--muted); font-size: 14px; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: 8px;
+      border: 1px solid var(--purple);
+      color: #ddd6fe;
+      background: rgba(139, 92, 246, 0.16);
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin-bottom: 20px;
+    }
+    h2 { margin-top: 0; color: var(--cyan); font-size: 20px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h3 { color: #c4b5fd; font-size: 16px; margin-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    th { color: var(--cyan); font-weight: 600; background: rgba(6, 182, 212, 0.06); }
+    code {
+      background: #0d0d16;
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+      color: #67e8f9;
+    }
+    ul, ol { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    .note {
+      border-left: 3px solid var(--green);
+      background: rgba(34, 197, 94, 0.08);
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Reviva NexGEN Audio Restorer — User Manual &amp; Technical Specs</h1>
+      <div class="meta">
+        <span class="badge">Version 1.0.0</span>
+        <span class="badge">MIT Open-Source</span>
+        <span class="badge">Windows 10 / 11 (x64)</span>
+        <span class="badge">100% Offline</span>
+      </div>
+      <p class="meta" style="margin-top:12px;">
+        Developer: <strong>Dr. Vinayak Ashok Bharadi</strong> &bull; Contact: <code>vinayagaurang@zohomail.in</code>
+      </p>
+    </header>
+
+    <section>
+      <h2>1. Overview</h2>
+      <p>
+        <strong>Reviva NexGEN Audio Restorer</strong> is a native Windows desktop application built in <strong>Rust</strong>
+        (<code>eframe</code> / <code>egui</code>) that transforms old, noisy, mono, or low-bitrate retro MP3 and audio recordings into
+        clean, wide stereo or 3D binaural studio-mastered tracks—completely offline on your PC.
+      </p>
+      <div class="note">
+        <strong>100% Ready Offline:</strong> The Windows installer bundles <code>deepfilternet3.onnx</code>,
+        <code>IRC_1002_C.bin</code>, and a multi-core Rust DSP engine so restoration works immediately without an internet connection.
+      </div>
+    </section>
+
+    <section>
+      <h2>2. System Requirements</h2>
+      <table>
+        <tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr>
+        <tr><td>Operating System</td><td>Windows 10 (64-bit)</td><td>Windows 11 (64-bit)</td></tr>
+        <tr><td>Processor</td><td>Dual-Core x86_64</td><td>Quad-Core+ (multi-core <code>rayon</code> DSP)</td></tr>
+        <tr><td>Memory (RAM)</td><td>4 GB</td><td>8 GB+</td></tr>
+        <tr><td>GPU Acceleration</td><td>DirectX 12 (or CPU fallback)</td><td>DirectML GPU (NVIDIA / AMD / Intel)</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>3. User Manual — Studio Workflow</h2>
+      <ol>
+        <li><strong>Import Audio:</strong> Drag and drop any <code>.mp3</code>, <code>.wav</code>, <code>.flac</code>, <code>.ogg</code>, <code>.m4a</code>, or <code>.aac</code> file, or click <em>Browse Files from Drive...</em>.</li>
+        <li><strong>Inspect Baseline:</strong> View the interactive waveform, spectrogram heatmap, <strong>Stereo Channel Badge</strong> (<code>2.0 TRUE STEREO</code> vs <code>1.0 MONO</code>), L/R RMS levels, and detected audio issues.</li>
+        <li><strong>Configure the 5 Color-Coded Pipeline Blocks:</strong>
+          <ul>
+            <li><strong>1. Enhancement Preset (Purple):</strong> Choose <em>Clean &amp; Natural</em>, <em>Studio Remaster</em>, <em>3D Surround</em>, or <em>Vocal Focus</em>.</li>
+            <li><strong>2. Clean &amp; Denoise (Cyan):</strong> Toggle <code>50Hz</code>/<code>60Hz</code> Hum Notch + Vinyl De-Clicker and Stage 1 Denoise strength.</li>
+            <li><strong>3. Reconstruct &amp; Spatial (Blue):</strong> Adjust Bandwidth <em>Clarity</em>, Stereo <em>Width</em>, and Spatial Mode (<em>Original Stereo</em>, <em>Wide Stereo</em>, or <em>3D Binaural Surround</em>).</li>
+            <li><strong>4. Tone &amp; Mixer (Amber):</strong> Switch between the <em>5-Band EQ</em> (60Hz–12kHz) and <em>4-Stem Mixer</em> (Vocals, Drums, Bass, Other for 4-stem ONNX models).</li>
+            <li><strong>5. Mastering &amp; Export (Emerald):</strong> Toggle <em>R128 (-14 LUFS)</em>, <em>Tags</em> (ID3/cover art preservation), <em>GPU</em> (DirectML), and select output format.</li>
+          </ul>
+        </li>
+        <li><strong>Preview or Render:</strong> Click <em>Preview 10s</em> for a fast 10-second audition around the playhead, or <em>Reconstruct &amp; Enhance</em> for full-track processing.</li>
+        <li><strong>Compare &amp; Export:</strong> Press <code>Space</code> to Play/Pause and <code>Tab</code> to switch <em>A (Original) &harr; B (Restored)</em>. Use <em>Set A</em> / <em>Set B</em> to loop sections, review the side-by-side <strong>Quality Score Improvement</strong> report, and export your file.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>4. Batch Queue, Pluggable Models &amp; Privacy</h2>
+      <ul>
+        <li><strong>Batch Queue Tab:</strong> Add multiple files or an entire folder and click <em>Process All &amp; Export to Folder...</em> to restore an entire collection sequentially.</li>
+        <li><strong>Settings &amp; Models Tab:</strong> Select active ONNX model slots, download additional models (<code>HTDemucs v4</code>, <code>BS-RoFormer</code>, <code>DeepFilterNet 3</code>, <code>IRCAM HRIR</code>) with live progress and SHA-256 verification, or plug in custom future <code>.onnx</code> models.</li>
+        <li><strong>About &amp; Legal Tab:</strong> Includes the MIT License, Terms of Use, and Zero-Data-Collection Privacy Policy.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Technical Specifications</h2>
+      <table>
+        <tr><th>Subsystem</th><th>Technology / Crate</th><th>Specification</th></tr>
+        <tr><td>Core Language &amp; UI</td><td>Rust 2021 + <code>eframe</code> / <code>egui 0.29</code></td><td>Native Windows x64 <code>.exe</code>, GPU-accelerated dark neon UI</td></tr>
+        <tr><td>Audio Decoding &amp; Resampling</td><td><code>symphonia 0.5</code> + <code>rubato 0.15</code></td><td>MP3, WAV, FLAC, OGG, AAC/M4A; 128-tap sinc resample to 44.1 kHz</td></tr>
+        <tr><td>Multi-Core DSP</td><td><code>realfft 3.4</code> + <code>rayon 1.10</code></td><td>2048-pt Hann STFT Wiener denoiser, 50/60 Hz IIR notches, de-clicker, 5-band EQ</td></tr>
+        <tr><td>AI Inference Engine</td><td><code>ort 2.0</code> (ONNX Runtime)</td><td>DirectML Windows GPU + CPU fallback; chunked overlap-add inference</td></tr>
+        <tr><td>Spatial &amp; Mastering</td><td><code>hrtf 0.9</code> + <code>ebur128 0.1</code></td><td>Overlap-save 3D HRTF binaural rendering + ITU-R BS.1770 (-14 LUFS) mastering</td></tr>
+        <tr><td>Export &amp; Metadata</td><td><code>mp3lame-encoder</code>, <code>flacenc</code>, <code>hound</code>, <code>lofty</code></td><td>MP3 VBR V0/V2 &amp; CBR 320, 24-bit FLAC, 16/24-bit WAV, ID3/cover art, optional AC-3</td></tr>
+      </table>
+    </section>
+
+    <footer>
+      Reviva NexGEN Audio Restorer v1.0.0 &bull; MIT License &bull; &copy; 2026 Dr. Vinayak Ashok Bharadi
+    </footer>
+  </div>
+</body>
+</html>

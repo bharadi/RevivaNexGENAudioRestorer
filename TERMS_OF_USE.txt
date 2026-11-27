@@ -1,0 +1,35 @@
+Terms of Use, User Agreement & Privacy Policy for Reviva NexGEN Audio Restorer
+Effective Date: November 25, 2026
+
+By downloading, installing, or using Reviva NexGEN Audio Restorer, you agree to the following Terms of Use, Open-Source License, and Privacy Policy.
+
+1. Open-Source License & Free Use (MIT License)
+Reviva NexGEN Audio Restorer is provided free of charge under the MIT Open-Source License for personal, educational, and general use. You may use, copy, modify, and distribute the software subject to the terms of the MIT License.
+
+2. Privacy Policy (Zero Data Collection)
+Reviva NexGEN Audio Restorer respects your privacy completely:
+- No Personal Data Collected: This application does NOT collect, store, transmit, or sell any personal data, usage analytics, telemetry, crash reports, or audio files.
+- 100% Local Processing: All audio decoding, noise removal, bandwidth reconstruction, stereo/spatial enhancement, and file exports run locally on your Windows device.
+- Network Access: The application makes zero network connections during audio processing. Network requests occur ONLY if you explicitly click "Download Model" in Settings & Models to fetch optional open-source AI model weights from third-party hosts (such as HuggingFace or GitHub).
+
+3. User Responsibility for Audio Content & Third-Party Models
+Reviva NexGEN Audio Restorer is a neutral technical audio restoration utility. By using this application, you agree that:
+- Legality & Copyright: You are solely responsible for ensuring that you have the legal right to process, modify, and export any audio files used with this application. You agree not to use the software to infringe upon any copyright, trademark, or intellectual property rights.
+- Optional AI Models: Any optional ONNX or HRIR model weights downloaded from third-party repositories are governed by their respective authors' licenses. You are responsible for reviewing and complying with those model licenses.
+
+4. Disclaimer of Warranties ("As-Is")
+Reviva NexGEN Audio Restorer is provided on an "AS IS" and "AS AVAILABLE" basis, without warranties of any kind—either express or implied—including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, or non-infringement. The developer does not guarantee that the application will be error-free, uninterrupted, or produce specific acoustic results on all audio files.
+
+5. Limitation of Liability
+To the maximum extent permitted by applicable law, the developer shall not be held liable for any direct, indirect, incidental, special, or consequential damages resulting from:
+- Your use or inability to use the application
+- Any audio files, data, or third-party AI models processed or downloaded by you
+- Data loss, file corruption, or hardware/system issues
+- Legal claims arising from your violation of copyright laws or third-party licenses
+
+6. Changes to These Terms
+The developer reserves the right to update these Terms of Use and Privacy Policy at any time. Continued use of the application after any updates constitutes acceptance of the revised terms.
+
+7. Contact Information
+Developer: Dr. Vinayak Ashok Bharadi
+Email: vinayagaurang@zohomail.in
