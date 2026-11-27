@@ -1,5 +1,6 @@
 fn main() {
-    if std::env::var_os("CARGO_CFG_WINDOWS").is_some() {
+    #[cfg(target_os = "windows")]
+    {
         let mut res = winresource::WindowsResource::new();
         res.set_icon("assets/app_icon.ico");
         res.set("ProductName", "Reviva NexGEN Audio Restorer");
